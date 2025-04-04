@@ -65,6 +65,76 @@ return [
 
 Dans un projet PHP standard, vous devez utiliser **`DependencyContainer`** pour enregistrer les services. Assurez-vous que **`config.php`** est correctement configuré.
 
+## Utilisation
+
+### **Envoyer un SMS**
+
+Pour envoyer un SMS, utilisez la méthode **`sendMessage`**.
+
+#### Exemple dans Laravel :
+```php
+use Blackdavinci\NimbasmsPhp\NimbaSMSClient;
+
+class SmsController extends Controller
+{
+    public function send(NimbaSMSClient $client)
+    {
+        $response = $client->sendMessage('1234567890', 'Message de test');
+        return response()->json($response);
+    }
+}
+```
+
+#### Exemple dans un projet PHP standard :
+```php
+require_once 'vendor/autoload.php';
+$config = require 'config.php';
+
+use Blackdavinci\NimbasmsPhp\NimbaSMSClient;
+
+$client = new NimbaSMSClient($config['api_key']);
+$response = $client->sendMessage('1234567890', 'Message de test');
+echo json_encode($response);
+```
+
+### **Gérer les contacts**
+
+#### Ajouter un contact :
+
+```php
+$response = $client->addContact('John Doe', '1234567890');
+```
+
+#### Lister les contacts :
+
+```php
+$response = $client->listContacts();
+```
+
+#### Supprimer un contact :
+
+```php
+$response = $client->deleteContact($contactId);
+```
+
+#### Mettre à jour un contact :
+
+```php
+$response = $client->updateContact($contactId, 'New Name', '0987654321');
+```
+### **Vérifier le solde**
+
+Pour vérifier le solde de votre compte Nimba SMS :
+
+```php
+$response = $client->checkBalance();
+```
+
+
+
+
+
+
 
 
 
