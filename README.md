@@ -27,10 +27,10 @@ Vous pouvez installer le package via Composer en l'ajoutant directement à votre
 ```bash
 composer require blackdavinci/nimbasms-php
 
-### 2. **Ajouter la clé API dans .env (si vous utilisez Laravel)**
+### 2. Ajouter la clé API dans .env (si vous utilisez Laravel)
 
-Dans votre fichier .env, ajoutez la clé API fournie par Nimba SMS :
+Dans votre fichier `.env`, ajoutez la clé API fournie par Nimba SMS :
 
-```bash
+```env
 NIMBA_SMS_API_KEY=your_api_key_here
 
