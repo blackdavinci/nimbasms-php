@@ -36,3 +36,36 @@ Dans votre fichier .env, ajoutez la clé API fournie par Nimba SMS :
 NIMBA_SMS_API_KEY=your_api_key_here
 ```
 
+### 3. **Configuration dans un projet PHP standard**
+
+Si vous utilisez un projet PHP non Laravel, vous pouvez configurer la clé API dans un fichier config.php :
+
+```php
+<?php
+// config.php
+return [
+    'api_key' => 'your_api_key_here',
+    'api_url' => 'https://api.nimbasms.com/',
+];
+```
+
+---
+
+## Configuration
+
+### **Laravel**
+
+1. **Enregistrer le ServiceProvider** (automatiquement via `Package Discovery`).
+   - Il n'y a rien à faire manuellement dans `config/app.php` si vous utilisez **Laravel Package Discovery**.
+   - Laravel détectera automatiquement le **`NimbaSMSServiceProvider`** lors de l'installation.
+
+2. **Utilisation dans votre application Laravel** : Vous pouvez maintenant injecter **`NimbaSMSClient`** dans vos contrôleurs.
+
+### **PHP standard**
+
+Dans un projet PHP standard, vous devez utiliser **`DependencyContainer`** pour enregistrer les services. Assurez-vous que **`config.php`** est correctement configuré.
+
+
+
+
+
