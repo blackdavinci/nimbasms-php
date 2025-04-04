@@ -1,6 +1,3 @@
-# Let's create the README.md file with the content provided.
-
-readme_content = """
 # NimbaSMS PHP Client
 
 Un client PHP pour intégrer facilement l'API Nimba SMS à votre application, permettant l'envoi de SMS, la gestion des contacts et la vérification du solde.
@@ -26,3 +23,112 @@ Vous pouvez installer le package via Composer en l'ajoutant directement à votre
 
 ```bash
 composer require blackdavinci/nimbasms-php
+2. Ajouter la clé API dans .env (si vous utilisez Laravel)
+Dans votre fichier .env, ajoutez la clé API fournie par Nimba SMS :
+
+env
+Copy
+NIMBA_SMS_API_KEY=your_api_key_here
+3. Configuration dans un projet PHP standard
+Si vous utilisez un projet PHP non Laravel, vous pouvez configurer la clé API dans un fichier config.php :
+
+php
+Copy
+<?php
+// config.php
+return [
+    'api_key' => 'your_api_key_here',
+    'api_url' => 'https://api.nimbasms.com/',
+];
+Configuration
+Laravel
+Enregistrer le ServiceProvider (automatiquement via Package Discovery).
+
+Il n'y a rien à faire manuellement dans config/app.php si vous utilisez Laravel Package Discovery.
+
+Laravel détectera automatiquement le NimbaSMSServiceProvider lors de l'installation.
+
+Utilisation dans votre application Laravel : Vous pouvez maintenant injecter NimbaSMSClient dans vos contrôleurs.
+
+PHP standard
+Dans un projet PHP standard, vous devez utiliser DependencyContainer pour enregistrer les services. Assurez-vous que config.php est correctement configuré.
+
+Utilisation
+Envoyer un SMS
+Pour envoyer un SMS, utilisez la méthode sendMessage.
+
+Exemple dans Laravel :
+php
+Copy
+use Blackdavinci\NimbasmsPhp\NimbaSMSClient;
+
+class SmsController extends Controller
+{
+    public function send(NimbaSMSClient $client)
+    {
+        $response = $client->sendMessage('1234567890', 'Message de test');
+        return response()->json($response);
+    }
+}
+Exemple dans un projet PHP standard :
+php
+Copy
+require_once 'vendor/autoload.php';
+$config = require 'config.php';
+
+use Blackdavinci\NimbasmsPhp\NimbaSMSClient;
+
+$client = new NimbaSMSClient($config['api_key']);
+$response = $client->sendMessage('1234567890', 'Message de test');
+echo json_encode($response);
+Gérer les contacts
+Ajouter un contact :
+php
+Copy
+$response = $client->addContact('John Doe', '1234567890');
+Lister les contacts :
+php
+Copy
+$response = $client->listContacts();
+Supprimer un contact :
+php
+Copy
+$response = $client->deleteContact($contactId);
+Mettre à jour un contact :
+php
+Copy
+$response = $client->updateContact($contactId, 'New Name', '0987654321');
+Vérifier le solde
+Pour vérifier le solde de votre compte Nimba SMS :
+
+php
+Copy
+$response = $client->checkBalance();
+Récupérer l'historique des messages
+Pour obtenir l'historique des messages envoyés :
+
+php
+Copy
+$response = $client->getMessageHistory('2023-01-01', '2023-12-31');
+Enregistrement automatique avec Laravel
+Lorsque vous installez ce package via Composer, Laravel enregistre automatiquement le NimbaSMSServiceProvider grâce à la fonctionnalité de Package Discovery. Vous n'avez pas besoin de modifier manuellement le fichier config/app.php.
+
+Laravel va automatiquement configurer l'accès à NimbaSMSClient dans vos contrôleurs via l'injection de dépendance.
+
+Licence
+Ce package est distribué sous la licence MIT. Consultez le fichier LICENSE pour plus de détails.
+
+Remarque supplémentaire
+Assurez-vous de bien avoir GuzzleHttp et vlucas/phpdotenv installés dans votre projet Laravel pour que le client fonctionne correctement.
+
+Si vous utilisez ce package dans un environnement non Laravel, vous devez configurer manuellement la clé API et l'URL de l'API via le fichier config.php et utiliser le conteneur de dépendances DependencyContainer pour injecter le client.
+
+csharp
+Copy
+
+# Save the README.md file
+file_path = '/mnt/data/README.md'
+with open(file_path, 'w') as f:
+    f.write(readme_content)
+
+file_path &#8203;:contentReference[oaicite:0]{index=0}&#8203;
