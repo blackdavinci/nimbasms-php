@@ -24,13 +24,15 @@ Un client PHP pour intégrer facilement l'API Nimba SMS à votre application, pe
 
 Vous pouvez installer le package via Composer en l'ajoutant directement à votre fichier `composer.json` ou en utilisant la commande suivante :
 
-
-Exemple complet dans le contexte d'une section d'installation :
-
-```markdown
-## Installation
-
-### 1. Installer via Composer
-
 ```bash
 composer require blackdavinci/nimbasms-php
+```
+
+### 2. **Ajouter la clé API dans .env (si vous utilisez Laravel)**
+
+Dans votre fichier .env, ajoutez la clé API fournie par Nimba SMS :
+
+```env
+NIMBA_SMS_API_KEY=your_api_key_here
+```
+
