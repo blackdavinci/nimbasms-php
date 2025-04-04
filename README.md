@@ -1,3 +1,6 @@
+# Let's create the README.md file with the content provided.
+
+readme_content = """
 # NimbaSMS PHP Client
 
 Un client PHP pour intégrer facilement l'API Nimba SMS à votre application, permettant l'envoi de SMS, la gestion des contacts et la vérification du solde.
