@@ -130,12 +130,22 @@ Pour vérifier le solde de votre compte Nimba SMS :
 $response = $client->checkBalance();
 ```
 
+### **Récupérer l'historique des messages **
 
+Pour obtenir l'historique des messages envoyés :
 
+```php
+$response = $client->getMessageHistory('2023-01-01', '2023-12-31');
+```
 
+## Enregistrement automatique avec Laravel
 
+Lorsque vous installez ce package via Composer, Laravel **enregistre automatiquement** le **`NimbaSMSServiceProvider`** grâce à la fonctionnalité de **Package Discovery**. Vous n'avez pas besoin de modifier manuellement le fichier **`config/app.php`**.
 
+Laravel va automatiquement configurer l'accès à **NimbaSMSClient** dans vos contrôleurs via l'injection de dépendance.
 
+---
 
+## Licence
 
-
+Ce package est distribué sous la licence **MIT**. Consultez le fichier `LICENSE` pour plus de détails.
