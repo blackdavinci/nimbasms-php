@@ -1,4 +1,4 @@
-# NimbaSMS PHP Client
+# NimbaSMS PHP API
 
 Un client PHP pour intégrer facilement l'API Nimba SMS à votre application, permettant l'envoi de SMS, la gestion des contacts et la vérification du solde.
 
